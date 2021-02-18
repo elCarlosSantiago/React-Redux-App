@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import App from './App';
 import { Provider } from 'react-redux';
-
+import './index.css'
 import reducer from './reducers';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

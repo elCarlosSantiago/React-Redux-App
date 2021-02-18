@@ -1,4 +1,3 @@
-import './App.css';
 import Header from './components/Header';
 import JokeContainer from './components/JokeContainer';
 import DogPic from './components/DogPic';

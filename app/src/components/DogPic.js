@@ -1,23 +1,26 @@
-import React, {useEffect} from 'react'
-import { connect } from 'react-redux'
-import {getDog} from './../actions/picActions'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getDog } from './../actions/picActions';
 
 export const DogPic = (props) => {
+  const { isFetching } = props;
 
+  return (
+    <div className="img-container">
+      {isFetching ? (
+        <p>Fetching Doggo</p>
+      ) : (
+        <img alt="random dog" src={props.imgUrl} />
+      )}
+    </div>
+  );
+};
 
-    return (
-        <div className='img-container'>
-            <img alt='random dog' src={props.imgUrl}/>
-        </div>
-    )
-}
+const mapStateToProps = (state) => {
+  return {
+    imgUrl: state.picReducer.imgUrl,
+    joke: state.jokeReducer.joke,
+  };
+};
 
-const mapStateToProps = state => {
-    return({
-        imgUrl: state.picReducer.imgUrl,
-        joke: state.jokeReducer.joke
-    })
-}
-
-
-export default connect(mapStateToProps, {getDog})(DogPic)
+export default connect(mapStateToProps, { getDog })(DogPic);

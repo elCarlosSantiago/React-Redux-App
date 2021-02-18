@@ -1,23 +1,29 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getJoke } from './../actions/jokeActions';
+import { getDog } from './../actions/picActions';
 
 function JokeContainer(props) {
-  const { getJoke, joke, isFetching, error } = props;
+  const { isFetching } = props;
   useEffect(() => {
     props.getJoke();
+    props.getDog();
   }, []);
 
   const handleClick = () => {
     props.getJoke();
+    props.getDog();
   };
 
   return (
-    <section>
+    <section className='joke-section'>
       <h2>Daily dose of Kneeslappery</h2>
       <button onClick={handleClick}>Slap Knee!</button>
-      {isFetching && <p>Protect your knees, slapper incoming...</p>}
-      <p>{props.joke}</p>
+      {isFetching ? (
+        <p>Protect your knees, slapper incoming...</p>
+      ) : (
+        <p>{props.joke}</p>
+      )}
     </section>
   );
 }
@@ -31,4 +37,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getJoke })(JokeContainer);
+export default connect(mapStateToProps, { getJoke, getDog })(JokeContainer);
