@@ -16,8 +16,7 @@ function JokeContainer(props) {
   };
 
   return (
-    <section className='joke-section'>
-      <h2>Daily dose of Kneeslappery</h2>
+    <section className="joke-section">
       <button onClick={handleClick}>Slap Knee!</button>
       {isFetching ? (
         <p>Protect your knees, slapper incoming...</p>
